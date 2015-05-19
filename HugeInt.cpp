@@ -5,22 +5,22 @@ HugeInt::HugeInt(){
 	num.push_back(0);
 }
 
-HugeInt::HugeInt(string n){
-	for(int i=n.size()-1;i>=0;i--){
-		num.push_back(n[i]);
+HugeInt::HugeInt(string s){
+	for(int i=s.size()-1;i>=0;i--){
+		num.push_back(s[i]);
 	}
 }
 
-HugeInt::HugeInt(int n){
-	int digit=0,n_1=n;
+HugeInt::HugeInt(int k){
+	int digit=0,n_1=k;
 	if(n_1==0){digit=1;}
 	while(n_1!=0){
 		digit++;
 		n_1=n_1/10;
 	}
 	for(int i=0;i<digit;i++){
-		num.push_back(n%10);
-		n=n/10;
+		num.push_back(k%10);
+		k=k/10;
 }}
 
 vector<int> HugeInt::operator+(const HugeInt &b){
@@ -66,23 +66,23 @@ vector<int> HugeInt::operator-(const HugeInt&b){
 	return result;
 }
 
-void HugeInt::operator=(const vector<int> a){
+void HugeInt::operator=(const vector<int> l){
 	num.clear();
-	for(int i=0;i<a.size();i++){
-		num.push_back(a[i]);
+	for(int i=0;i<l.size();i++){
+		num.push_back(l[i]);
 }}
 
-ostream &operator<<(ostream &out,const HugeInt &a){
-	for(int i=a.num.size()-1;i>=0;i--){
-		out<<a.num[i];
+ostream &operator<<(ostream &out,const HugeInt &l){
+	for(int i=l.num.size()-1;i>=0;i--){
+		out<<l.num[i];
 	}
 	return out;
 }
-istream &operator>>(istream &in,HugeInt &a){
-	a.num.clear();
-	in >> a.input;
-	for(int i=a.input.size()-1;i>=0;i--){
-		a.num.push_back(a.input[i]-'0');
+istream &operator>>(istream &in,HugeInt &l){
+	l.num.clear();
+	in >> l.input;
+	for(int i=l.input.size()-1;i>=0;i--){
+		l.num.push_back(l.input[i]-'0');
 	}
 	return in;
 }
